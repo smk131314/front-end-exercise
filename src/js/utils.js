@@ -54,10 +54,8 @@ class Utils {
 				} = comment
 				this.renderComment(name, body, likes)
 			});
-		})
-		.then(
 			this.sortComment()
-		)
+		})
 	}
 
 	renderComment(userName, commentBody, likes) {
@@ -82,7 +80,7 @@ class Utils {
 	toggleSortingButton(event) {
 		let isPressed = event.target.getAttribute('aria-pressed') === 'true'
 		event.target.setAttribute('aria-pressed', String(!isPressed))
-		if (isPressed) {
+		if (!isPressed) {
 			this.renderSortedComment(this.sortedComments)
 		} else {
 			this.renderSortedComment(this.comments)
