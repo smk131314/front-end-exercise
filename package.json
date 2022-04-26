@@ -4,7 +4,7 @@
   "description": "Telegraph Front-End Exercise",
   "main": "server/app.js",
   "scripts": {
-	"predev": "npm run build",
+    "predev": "npm run build",
     "dev": "npm-run-all -p dev:server watch:*",
     "dev:server": "nodemon server/app.js -e js,handlebars,json --watch server --watch views",
     "build": "npm-run-all build:*",
