@@ -79,7 +79,7 @@
 }
 
 .comment button {
-  font-weight: 500;
+  font-weight: bold;
   font-size: 0.75rem;
   cursor: pointer;
 }
@@ -93,5 +93,13 @@
   .comment {
     flex-direction: row;
     height: 7.5rem;
+    align-items: flex-start;
+  }
+
+  .comment > button {
+    min-width: 5rem;
+    text-align: right;
+    margin-left: 2.5rem;
+    padding: 0;
   }
 }
