@@ -1,3 +1,5 @@
 const Utils = require('./utils');
 
-new Utils();
+const util = new Utils();
+
+util.init()
