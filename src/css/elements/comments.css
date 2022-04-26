@@ -46,12 +46,18 @@
   margin-right: 1rem;
 }
 
-.comments__sorting button {
+.toggle-button {
   height: 2rem;
   width: 4.5rem;
   border-radius: 2rem;
   border: 1px solid;
   cursor: pointer;
+}
+
+.toggle-button:hover,
+.toggle-button[aria-pressed="true"] {
+  background-color: black;
+  color: white;
 }
 
 .comment {

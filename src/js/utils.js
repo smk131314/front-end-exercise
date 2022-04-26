@@ -9,6 +9,8 @@ class Utils {
 		this.params = Object.assign({
 			homePagePath: '/'
 		}, params);
+		this.comments = []
+		this.sortedComments = []
 	}
 
 	/**
@@ -21,7 +23,7 @@ class Utils {
 
 	init() {
 		this.addOnLoadedEventListener()
-		//TODO: add click event listener
+		this.addSortingButtonClickEventLister()
 	}
 
 	addOnLoadedEventListener() {
@@ -43,6 +45,7 @@ class Utils {
 	updateComments() {
 		this.getComments()
 		.then(comments => {
+			this.comments = comments
 			comments.forEach(comment => {
 				const {
 					body,
@@ -52,6 +55,9 @@ class Utils {
 				this.renderComment(name, body, likes)
 			});
 		})
+		.then(
+			this.sortComment()
+		)
 	}
 
 	renderComment(userName, commentBody, likes) {
@@ -64,6 +70,41 @@ class Utils {
 			<button name="likes" type="button"><span>${likes}</span> Likes</button>
 		</li>`
 		commentContainer.insertAdjacentHTML('beforeend', html)
+	}
+
+	addSortingButtonClickEventLister() {
+		const sortingToggleButton = document.querySelector('[aria-pressed]')
+		sortingToggleButton.addEventListener('click', e => {
+			this.toggleSortingButton(e)
+		})
+	}
+
+	toggleSortingButton(event) {
+		let isPressed = event.target.getAttribute('aria-pressed') === 'true'
+		event.target.setAttribute('aria-pressed', String(!isPressed))
+		if (isPressed) {
+			this.renderSortedComment(this.sortedComments)
+		} else {
+			this.renderSortedComment(this.comments)
+		}
+	}
+
+	sortComment() {
+		const copiedComments = [...this.comments]
+		this.sortedComments = copiedComments.sort((a,b) => b.likes - a.likes)
+	}
+
+	renderSortedComment(commentDataList) {
+		const commentContainer = document.querySelector('.comments__comment-list')
+		commentContainer.innerHTML = ''
+		commentDataList.forEach(comment => {
+			const {
+				body,
+				name,
+				likes
+			} = comment
+			this.renderComment(name, body, likes)
+		})
 	}
 }
 
