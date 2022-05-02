@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/telegraph/frontend-exercise#readme",
   "dependencies": {
+    "@types/jest": "^27.4.1",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0"
   },
