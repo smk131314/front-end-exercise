@@ -1,5 +1,7 @@
 const Utils = require('./utils');
+const CommentsClient = require('./comments/commentsClient');
+const CommentsService = require('./comments/commentsService')
 
-const util = new Utils();
-
-util.init()
+new Utils();
+const service = new CommentsService(new CommentsClient());
+service.init();
