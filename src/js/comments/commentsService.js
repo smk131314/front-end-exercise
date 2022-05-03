@@ -6,6 +6,10 @@ class CommentsService {
     this.isInitialized = false;
   }
 
+  comments() {
+    return this._comments
+  }
+
   get commentContainer() {
     return document.querySelector(`.${this.containerClassName}`)
   }
@@ -82,7 +86,6 @@ class CommentsService {
 		</li>`
 		this.commentContainer.insertAdjacentHTML('beforeend', html)
   }
-
 }
 
 module.exports = CommentsService
