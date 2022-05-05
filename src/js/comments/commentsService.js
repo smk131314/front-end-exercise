@@ -82,7 +82,7 @@ class CommentsService {
 				<p class="comment__user-name">${userName}</p>
 				<p class="comment__content-body">${commentBody}</p>
 			</div>
-			<button name="likes" type="button"><span>${likes}</span> Likes</button>
+			<button name="likes" type="button"><span class="comment__like-count">${likes}</span> Likes</button>
 		</li>`
 		this.commentContainer.insertAdjacentHTML('beforeend', html)
   }
